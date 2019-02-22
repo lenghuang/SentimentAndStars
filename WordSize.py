@@ -14,7 +14,7 @@ under100 = []
 with open('DummyData.json','r') as file:
     for line in file:
         line = json.loads(line)
-        if (getWordCount(line['text']) < 20):
+        if (getWordCount(line['text']) < 100):
             under100.append(line)
 
 for n in range(0,len(under100)):
