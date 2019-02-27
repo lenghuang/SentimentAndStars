@@ -7,7 +7,7 @@ def getWordCount(text_reference):
     blob = TextBlob(text_reference)
     return len(blob.words)
 def getSentStar(sent):
-    return 2.2338*sent + 3
+    return 2.5*sent + 3
 def getSent(n, list):
     blob = TextBlob(list[n]['text'])
     return float(blob.sentiment.polarity)
