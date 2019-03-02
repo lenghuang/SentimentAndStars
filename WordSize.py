@@ -2,7 +2,6 @@ import json
 import csv
 from textblob import TextBlob
 
-## Methods
 def getWordCount(text_reference):
     blob = TextBlob(text_reference)
     return len(blob.words)
@@ -26,49 +25,40 @@ def generateCSV(list, filename):
             csv_writer.writerow([review_id, sentiment, stars, sentStar, residual, wordCount, text])
         csv_file.close()
 
-## Main Method
-under50 = []
-under100 = []
-under200 = []
-under300 = []
-under400 = []
-under500 = []
-under600 = []
-under700 = []
-under800 = []
-under900 = []
-under1000 = []
-over1000 = []
+# init empty lists to put words into
+under50, under100, under200, under300, under400, under500 = [],[],[],[],[],[]
+under600, under700, under800, under900, under1000, over1000 = [],[],[],[],[],[]
 
 # read the entire file into a python list
 with open('yelp_academic_dataset_review.json','r') as file:
     for line in file:
         line = json.loads(line)
-        if getWordCount(line['text']) < 50:
+        review = line['text']
+        if getWordCount(review) < 50:
             under50.append(line)
-        elif 50 <= getWordCount(line['text']) < 100:
+        elif 50 <= getWordCount(review) < 100:
             under100.append(line)
-        elif 100 <= getWordCount(line['text']) < 200:
+        elif 100 <= getWordCount(review) < 200:
             under200.append(line)
-        elif 50 <= getWordCount(line['text']) < 300:
+        elif 200 <= getWordCount(review) < 300:
             under300.append(line)
-        elif 50 <= getWordCount(line['text']) < 400:
+        elif 300 <= getWordCount(review) < 400:
             under400.append(line)
-        elif 50 <= getWordCount(line['text']) < 500:
+        elif 400 <= getWordCount(review) < 500:
             under500.append(line)
-        elif 50 <= getWordCount(line['text']) < 600:
+        elif 500 <= getWordCount(review) < 600:
             under600.append(line)
-        elif 50 <= getWordCount(line['text']) < 700:
+        elif 600 <= getWordCount(review) < 700:
             under700.append(line)
-        elif 50 <= getWordCount(line['text']) < 800:
+        elif 700 <= getWordCount(review) < 800:
             under800.append(line)
-        elif 50 <= getWordCount(line['text']) < 900:
+        elif 800 <= getWordCount(review) < 900:
             under900.append(line)
-        elif 50 <= getWordCount(line['text']) < 1000:
+        elif 900 <= getWordCount(review) < 1000:
             under1000.append(line)
-        elif 1000 <= getWordCount(line['text']):
+        elif 1000 <= getWordCount(review):
             over1000.append(line)
-
+            
 generateCSV(under50, 'Under50.csv')
 generateCSV(under100, 'Under100.csv')
 generateCSV(under200, 'Under200.csv')
