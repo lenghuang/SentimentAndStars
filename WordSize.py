@@ -19,7 +19,7 @@ def generateCSV(list, filename):
             sentiment = getSent(n, list)
             stars = list[n]['stars']
             sentStar = getSentStar(sentiment)
-            residual = stars - sentStar
+            residual = sentStar - stars
             text = list[n]['text']
             wordCount = getWordCount(text)
             csv_writer.writerow([review_id, sentiment, stars, sentStar, residual, wordCount, text])
